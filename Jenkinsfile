@@ -3,9 +3,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                 nodejs(nodeJSInstallationName: 'Node 11.3.0') {
                     sh 'npm config ls'
-                 }
+                 
             }
         }
         stage('Test'){
