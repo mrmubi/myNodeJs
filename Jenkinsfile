@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                sh 'make' 
+                 nodejs(nodeJSInstallationName: 'Node 6.x', configId: '<config-file-provider-id>') {
+                    sh 'npm config ls'
             }
         }
         stage('Test'){
