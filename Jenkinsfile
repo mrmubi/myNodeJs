@@ -1,22 +1,15 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3000:3000'
-        }
-    }
-    environment {
-        CI = 'true' 
-    }
+pipeline { 
+    agent any 
     stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
+        stage('Build') { 
+            steps { 
+                sh 'make' 
             }
         }
-        stage('Test') { 
+        stage('Test'){
             steps {
-                sh './tests/gulpfile.js' 
+                sh 'make check'
+                junit 'reports/**/*.xml' 
             }
         }
     }
